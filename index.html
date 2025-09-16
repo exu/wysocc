@@ -1,66 +1,131 @@
-<html lang="pl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wysoccy - Rodzinna Piwnica z Nalewkami</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>wyso.cc — Wysocki Consulting</title>
+    <meta name="description" content="Wysocki Consulting — Your IT Intelligence. Programming • AI • Startups boosting." />
+    <meta property="og:title" content="Wysocki Consulting — wyso.cc" />
+    <meta property="og:description" content="Your IT Intelligence. Programming • AI • Startups boosting." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#4f46e5" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%234f46e5'/><text x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='700' font-size='60' fill='white'>W</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 10px;
-            margin: 0;
-        }
-        h1, h2 {
-            color: #8B4513;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .image {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        /* Mobile Styles */
-        @media (max-width: 600px) {
-            body {
-                padding: 5px;
-            }
-            h1, h2 {
-                font-size: 1.5rem;
-            }
-            .container {
-                padding: 10px;
-            }
-        }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Wysoccy - Rodzinna Piwnica z Nalewkami</h1>
-        <p>Gdzieś na polskiej wsi, w starym, kamiennym domu, pod ziemią kryje się skarb rodziny Wysockich - piwnica pełna domowych nalewek. To miejsce pełne historii, smaków i wspomnień, przekazywanych z pokolenia na pokolenie. Każda butelka, każda nalewka, to oddzielna opowieść - opowieść o owocach zbieranych własnoręcznie, o tradycyjnych recepturach, a przede wszystkim o pasji do rzemiosła.</p>
-
-        <div class="image">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAACkCAYAAABeZ0zdAAACWUlEQVR4nOzby23FIBSG4ZxKJDh8ZrkDOKepArv9Y2XKZQfY1KkDCGkpCjCQYyfpECGkpKiQAxRBRSRCaEpCMsEIaDfqBMzGv2fyzJwYS5pbmdyZW5pZW50AAAAXFjYm9ypmhkYzp0aXRsZWppbWFnZS53ZWJwaWRjOmZvcm1hdGRXRUJQamluc3RhbmNlSUR4LHhtcDppaWQ6NzUwNGY3ZTctOTcwZS00NjZkLWI0NzYtMzdkMDJiOTNhOWZhbWMycGFfbWFuaWZlc3SjY3VybHg+c2VsZiNqdW1iZj0vYzJwYS91cm46dXVpZDo2OWY5ZGFhZS02NTdlLTRkODYtYTUzYy01ZWE1MzBkMTFkOGFjYWxnZnNoYTI1NmRoYXNoWCBESElPRN2RYNAbihc1SV6pYuV4wEBmlN9KKan29jcbGWxyZWxhdGlvbnNoaXBocGFyZW50T2ZpdGh1bWJuYWlsomN1cmx4OXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEudGh1bWJuYWlsLmluZ3JlZGllbnQuanBlZ2RoYXNoWCAIp5bMo69PG+kr2qjsCM98ZeU/WymEf/SGJQ2Uj0beMQAAALBqdW1iAAAAKGp1bWRjYm9yABEAEIAAAKoAOJtxA2MycGEuaGFzaC5kYXRhAAAAAIBjYm9ypWpleGNsdXNpb25zgaJlc3RhcnQaAAPKSmZsZW5ndGgaAAHJiGRuYW1lbmp1bWJmIG1hbmlmZXN0Y2FsZ2ZzaGEyNTZkaGFzaFgg52amHMwJnNe3LiqE2oyt2skes4ez6X33md3X5YlUk05jcGFkSAAAAAAAAAAAAAACIGp1bWIAAAAkanVtZGMyY2wAEQAQgAAAqgA4m3EDYzJwYS5jbGFpbQAAAAH0Y2JvcqhoZGM6dGl0bGVqaW1hZ2Uud2VicGlkYzpmb3JtYXRkd2VicGppbnN0YW5jZUlEeCx4bXA6aWlkOjQ5ZmY2ZTIzLTgyOTItNGUxNS05NjVkLTAxZmNhMTY3ODYyOW9jbGFpbV9nZW5lcmF0b3J2Q2hhdEdQVCBjMnBhLXJzLzAuMzEuM3RjbGFpbV9nZW5lcmF0b3JfaW5mb/Zpc2lnbmF0dXJleBlzZWxmI2p1bWJmPWMycGEuc2lnbmF0dXJlamFzc2VydGlvbnODomN1cmx4OXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEudGh1bWJuYWlsLmluZ3JlZGllbnQuanBlZ2RoYXNoWCAIp5bMo69PG+kr2qjsCM98ZeU/WymEf/SGJQ2Uj0beMaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnRkaGFzaFgg/cVZu75XA3+imwXRKOE710PbL7rQFfNJNFzCJlnuP3miY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggReo/HgWxwHfY3x5VShGr7Fehc/ZAirxzD1+6q2InR5NjYWxnZnNoYTI1NgAANhlqdW1iAAAAKGp1bWRjMmNzABEAEIAAAKoAOJtxA2MycGEuc2lnbmF0dXJlAAAANeljYm9y0oRZB7eiASYYIYJZAy0wggMpMIICEaADAgECAhROSRZr826+/LLlQdgddc/q6E2hDjANBgkqhkiG9w0BAQwFADBKMRowGAYDVQQDDBFXZWJDbGFpbVNpZ25pbmdDQTENMAsGA1UECwwETGVuczEQMA4GA1UECgwHVHJ1ZXBpYzELMAkGA1UEBhMCVVMwHhcNMjQwMTMwMTUzNTM2WhcNMjUwMTI5MTUzNTM1WjBWMQswCQYDVQQGEwJVUzEPMA0GA1UECgwGT3BlbkFJMRAwDgYDVQQLDAdDaGF0R1BUMSQwIgYDVQQDDBtUcnVlcGljIExlbnMgQ0xJIGluIENoYXRHUFQwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARu5XJT4dFShFBrBPDqRYLH3vwxvPE2a2jGXte3kVDezs9k7ZOzswfpLn/A45p5qfl6v3NfFzLPZTO9HGCPIMT7='>
-            <p>Stara piwnica Wysockich, pełna butelek z różnymi nalewkami</p>
+<body class="bg-gray-50 text-gray-800 antialiased">
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+            <a href="#" class="flex items-center gap-3 group">
+                <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-600">
+                    <svg viewBox="0 0 100 100" class="h-6 w-6" aria-hidden="true">
+                        <path d="M18 30 L36 70 L50 30 L64 70 L82 30" stroke="white" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="font-bold text-lg tracking-tight text-gray-900">wyso.cc</span>
+            </a>
+            <nav class="hidden sm:flex gap-6 text-sm">
+                <a href="#services" class="hover:text-indigo-600">Services</a>
+                <a href="#about" class="hover:text-indigo-600">About</a>
+                <a href="#contact" class="hover:text-indigo-600">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden sm:inline-flex bg-indigo-600 text-white px-4 py-2 rounded-xl hover:bg-indigo-700">Let's Talk</a>
         </div>
+    </header>
 
-        <h2>Historia Nalewki Wiśniowej</h2>
-        <p>Jedną z najstarszych i najbardziej cenionych w rodzinie nalewek jest nalewka wiśniowa. Receptura powstała jeszcze w XIX wieku, kiedy to prapradziadek Wysockich, Ignacy, postanowił poeksperymentować z owocami z własnego sadu. Wiśnie wędrowały do ogromnych dębowych beczek, a proces fermentacji odbywał się w naturalnych warunkach piwnicznych. Do dziś nalewka ta zachowała swój intensywny, słodko-kwaśny smak, który pochodzi od soczystych, dojrzałych owoców.</p>
-
-        <div class="image">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iMjUwIiB2aWV3Qm94PSIwIDAgNTAwIDI1MCI+PHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNkZDNiM2EiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxMCIvPjwvc3ZnPg==" alt="Nalewka wiśniowa w dębowych beczkach">
-            <p>Wiśnie przygotowywane do produkcji nalewki</p>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+        <div  style="background-image: url('4.jpg'); background-size: cover; background-position: center;" class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
+        <div class="relative max-w-6xl mx-auto px-6 py-24 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">Wysocki Consulting</h1>
+            <p class="mt-4 text-xl md:text-2xl">Your IT Intelligence</p>
+            <p class="mt-6 max-w-2xl mx-auto text-white/90">Programming • AI • Startups Boosting • Kubernetes • Golang • Mentoring</p>
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-gray-900 font-medium hover:bg-gray-100">Explore Services</a>
+                <a href="#contact" class="bg-black/60 inline-flex items-center justify-center px-6 py-3 rounded-xl ring-1 ring-white/60 text-white hover:bg-white/60">Contact Me</a>
+            </div>
         </div>
+    </section>
 
-        <h2>Rodzinne Tradycje</h2>
-        <p>Każde pokolenie Wysockich dodaje coś od siebie do tradycji nalewkarskiej. Obecnie w piwnicy można znaleźć nalewki nie tylko z wiśni, ale także z malin, czarnej porzeczki, a nawet eksperymentalne wersje
+    <!-- Services -->
+    <section id="services" class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Services</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Programming</h3>
+                <p class="text-gray-600">Custom software solutions with modern technologies, architecture design, audits, performance optimization.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Artificial Intelligence</h3>
+                <p class="text-gray-600">LLMs, process automation, RAG pipelines, on-prem deployments, and advisory for intelligent systems.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Startups Boosting</h3>
+                <p class="text-gray-600">From idea to MVP and scaling: product discovery, roadmap design, technical stack selection, mentoring.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Kubernetes</h3>
+                <p class="text-gray-600">Infrastructure design, cost optimization, multi-tenant solutions, operators, and hands-on consulting.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Golang</h3>
+                <p class="text-gray-600">High-performance backend services, APIs, and cloud-native tooling built with Go.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-100">
+                <h3 class="text-lg font-semibold mb-2">Mentoring</h3>
+                <p class="text-gray-600">Guidance for engineers and founders: architecture reviews, career growth, and leadership coaching.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="bg-gray-100 py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">About Me</h2>
+            <p class="text-gray-700 leading-relaxed">
+                My name is Jacek Wysocki. I help companies and startups create reliable, scalable, and intelligent digital products.
+                Combining software engineering expertise with practical AI integration, I focus on delivering real business value.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Contact</h2>
+            <p class="text-gray-700 mb-6">Let's talk about your project.</p>
+            <a id="contact-email" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-xl hover:bg-indigo-700" rel="nofollow">Email me</a>
+            <noscript>
+                <span class="block mt-3 text-gray-600">j [at] wyso [dot] cc</span>
+            </noscript>
+            <div class="mt-6 flex items-center justify-center gap-4 text-sm text-gray-600">
+                <a href="https://www.linkedin.com/in/jacekwysocki" target="_blank" class="hover:text-indigo-600">LinkedIn</a>
+                <span>•</span>
+                <a href="https://github.com/exu" target="_blank" class="hover:text-indigo-600">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 text-center">
+        <p>© <span id="year"></span> Wysocki Consulting – wyso.cc</p>
+    </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Build email on the client to avoid exposing it to bots
+        (function () {
+            const codes = [106, 64, 119, 121, 115, 111, 46, 99, 99]; 
+            const email = String.fromCharCode(...codes);
+            const link = document.getElementById('contact-email');
+            if (link) {
+                link.href = 'mailto:' + email;
+                link.textContent = email;
+            }
+        })();
+    </script>
+</body>
+</html>
