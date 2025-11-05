@@ -13,9 +13,59 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
+
+        /* Mouse follower animation */
+        #mouse-follower {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.4) 0%, rgba(147, 51, 234, 0.2) 30%, transparent 70%);
+            transform: translate(-50%, -50%);
+        }
+
+        #mouse-follower.active {
+            opacity: 1;
+        }
+
+        body {
+            cursor: none;
+        }
+
+        a, button {
+            cursor: pointer;
+        }
+
+        /* Custom cursor dot */
+        #cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.8);
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+        }
+
+        #cursor-dot.hovering {
+            width: 24px;
+            height: 24px;
+            background: rgba(79, 70, 229, 0.5);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
+    <!-- Mouse follower elements -->
+    <div id="mouse-follower"></div>
+    <div id="cursor-dot"></div>
+
     <!-- Header -->
     <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
         <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
@@ -127,13 +177,82 @@
 
         // Build email on the client to avoid exposing it to bots
         (function () {
-            const codes = [106, 64, 119, 121, 115, 111, 46, 99, 99]; 
+            const codes = [106, 64, 119, 121, 115, 111, 46, 99, 99];
             const email = String.fromCharCode(...codes);
             const link = document.getElementById('contact-email');
             if (link) {
                 link.href = 'mailto:' + email;
                 link.textContent = email;
             }
+        })();
+
+        // Mouse follower animation
+        (function() {
+            const follower = document.getElementById('mouse-follower');
+            const cursorDot = document.getElementById('cursor-dot');
+
+            if (!follower || !cursorDot) return;
+
+            let mouseX = 0;
+            let mouseY = 0;
+            let followerX = 0;
+            let followerY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+            let isMoving = false;
+            let timeoutId;
+
+            // Update mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+                // Update cursor dot immediately
+                cursorX = mouseX;
+                cursorY = mouseY;
+                cursorDot.style.left = cursorX + 'px';
+                cursorDot.style.top = cursorY + 'px';
+
+                // Show follower
+                if (!isMoving) {
+                    follower.classList.add('active');
+                    isMoving = true;
+                }
+
+                // Reset hide timer
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    follower.classList.remove('active');
+                    isMoving = false;
+                }, 3000);
+            });
+
+            // Check for hovering over interactive elements
+            const interactiveElements = document.querySelectorAll('a, button');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.classList.remove('hovering');
+                });
+            });
+
+            // Smooth follower animation with easing
+            function animateFollower() {
+                // Smooth easing for trailing effect
+                const speed = 0.15;
+
+                followerX += (mouseX - followerX) * speed;
+                followerY += (mouseY - followerY) * speed;
+
+                follower.style.left = followerX + 'px';
+                follower.style.top = followerY + 'px';
+
+                requestAnimationFrame(animateFollower);
+            }
+
+            animateFollower();
         })();
     </script>
 </body>
