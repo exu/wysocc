@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#4f46e5" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%234f46e5'/><text x='50' y='50' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='700' font-size='60' fill='white'>W</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .floating-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 25%, rgba(236, 72, 153, 0.55), transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.45), transparent 50%),
+        radial-gradient(circle at 60% 80%, rgba(16, 185, 129, 0.3), transparent 50%),
+        #030014;
+    }
+
+    .floating-lines canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(248, 113, 113, 0.4), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(129, 140, 248, 0.35), transparent 40%),
+        linear-gradient(120deg, rgba(124, 58, 237, 0.45), rgba(13, 148, 136, 0.35), rgba(15, 118, 110, 0.3));
+      opacity: 0.75;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 55vw;
+      height: 55vw;
+      border-radius: 9999px;
+      filter: blur(140px);
+      opacity: 0.45;
+      mix-blend-mode: screen;
+      animation: heroGlowPulse 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .company-timeline {
+      position: relative;
+      margin: 0 auto;
+      max-width: 860px;
+      padding-left: 2.5rem;
+    }
+
+    .company-timeline::before {
+      content: "";
+      position: absolute;
+      left: 32px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(79, 70, 229, 0.35), rgba(6, 182, 212, 0.25));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 18px;
+      top: 1rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      border: 3px solid #eef2ff;
+      background: linear-gradient(145deg, #a78bfa, #34d399);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.35);
+    }
+
+    .timeline-year {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      font-weight: 700;
+      color: #6366f1;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 9999px;
+      padding: 0.2rem 1rem;
+      box-shadow: inset 0 0 0 1px rgba(99, 102, 241, 0.08);
+    }
+
+    .timeline-card {
+      margin-top: 0.75rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+      padding: 1.5rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .timeline-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .company-timeline {
+        padding-left: 1.5rem;
+      }
+
+      .company-timeline::before {
+        left: 20px;
+      }
+
+      .timeline-dot {
+        left: 10px;
+      }
+    }
+
+    .hero-glow-1 {
+      top: -22%;
+      left: -10%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.85), rgba(79, 70, 229, 0.25));
+    }
+
+    .hero-glow-2 {
+      bottom: -30%;
+      right: -12%;
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.8), rgba(14, 165, 233, 0.25));
+      opacity: 0.35;
+    }
+
+    @keyframes heroGlowPulse {
+      0% { transform: scale(0.9); }
+      100% { transform: scale(1.1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .floating-lines canvas {
+        mix-blend-mode: normal;
+      }
+      .hero-glow {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  {{ content | safe }}
+</body>
+</html>
